@@ -1,0 +1,84 @@
+Feb 25, 2016 2:34:53 PM sbeam.MainFrame <init>
+INFO: Sbeam starting
+X1: javax.swing.JLabel[,44,2,8x16,alignmentX=0.0,alignmentY=0.0,border=,flags=8388608,maximumSize=,minimumSize=,preferredSize=,defaultIcon=,disabledIcon=,horizontalAlignment=RIGHT,horizontalTextPosition=TRAILING,iconTextGap=4,labelFor=,text=0,verticalAlignment=CENTER,verticalTextPosition=CENTER]
+x2: javax.swing.JLabel[,44,2,8x16,alignmentX=0.0,alignmentY=0.0,border=,flags=8388608,maximumSize=,minimumSize=,preferredSize=,defaultIcon=,disabledIcon=,horizontalAlignment=RIGHT,horizontalTextPosition=TRAILING,iconTextGap=4,labelFor=,text=0,verticalAlignment=CENTER,verticalTextPosition=CENTER]
+document: sbeam.TOFPOEDocument@6f496d9f
+Feb 25, 2016 2:34:57 PM sbeam.MainFrame actionPerformed
+INFO: Calling: Open
+loading 21 tofs
+Loading in tof: 20 deg
+Loading in tof: 30 deg
+Loading in tof: 10 deg open
+Loading in tof: 10 deg closed
+Loading in tof: 10 deg
+Loading in tof: Calc #1.1:  m/e = 127, Lab Ang. = 10, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.2:  m/e = 127, Lab Ang. = 20, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.3:  m/e = 127, Lab Ang. = 30, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.1:  m/e = 127, Lab Ang. = 10, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.2:  m/e = 127, Lab Ang. = 20, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.3:  m/e = 127, Lab Ang. = 30, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.1:  m/e = 127, Lab Ang. = 10, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.2:  m/e = 127, Lab Ang. = 20, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.3:  m/e = 127, Lab Ang. = 30, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.1:  m/e = 127, Lab Ang. = 10, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.2:  m/e = 127, Lab Ang. = 20, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.3:  m/e = 127, Lab Ang. = 30, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #1
+Loading in tof: Calc #1.1:  m/e = 127, Lab Ang. = 10, Polar Ang. = 90
+Loading in tof: Calc #1.2:  m/e = 127, Lab Ang. = 20, Polar Ang. = 90
+Loading in tof: Calc #1.3:  m/e = 127, Lab Ang. = 30, Polar Ang. = 90
+Loading in tof: open-closed
+Visibility: -1
+X: javax.swing.JLabel[,44,2,8x16,alignmentX=0.0,alignmentY=0.0,border=,flags=8388608,maximumSize=,minimumSize=,preferredSize=,defaultIcon=,disabledIcon=,horizontalAlignment=RIGHT,horizontalTextPosition=TRAILING,iconTextGap=4,labelFor=,text=0,verticalAlignment=CENTER,verticalTextPosition=CENTER]
+Focus gained: P(E):  )))P(E)01
+here
+Focus lost: P(E):  )))P(E)01
+Focus gained: TOF: 20 deg
+Focus lost: TOF: 20 deg
+Focus gained: P(E):  )))P(E)01
+here
+Focus lost: P(E):  )))P(E)01
+Focus gained: TOF: 10 deg
+Focus lost: TOF: 10 deg
+Focus gained: P(E):  )))P(E)01
+Focus lost: P(E):  )))P(E)01
+Focus gained: P(E):  )))P(E)01
+here
+Focus lost: P(E):  )))P(E)01
+Focus gained: TOF: 10 deg
+Focus lost: TOF: 10 deg
+Focus gained: P(E):  )))P(E)01
+here
+Focus lost: P(E):  )))P(E)01
+Focus gained: TOF: open-closed
+Focus lost: TOF: open-closed
+Focus gained: P(E):  )))P(E)01
+Feb 25, 2016 2:35:39 PM sbeam.MainFrame actionPerformed
+INFO: Calling: Invert TOF to P(E)
+Focus lost: P(E):  )))P(E)01
+Focus gained: P(E):  )))P(E)01
+Focus lost: P(E):  )))P(E)01
+Focus gained: P(E):  )))P(E)01
+here
+Focus lost: P(E):  )))P(E)01
+Focus gained: TOF: 20 deg
+Feb 25, 2016 2:36:02 PM sbeam.MainFrame actionPerformed
+INFO: Calling: TOF Scaling Information
+Focus lost: TOF: 20 deg
+Focus gained: TOF: 20 deg
+here
+Focus lost: TOF: 20 deg
+Focus gained: TOF: 20 deg
+Focus lost: TOF: 20 deg
+Focus gained: TOF: 20 deg

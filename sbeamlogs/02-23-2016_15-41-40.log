@@ -1,0 +1,35 @@
+Feb 23, 2016 3:41:41 PM sbeam.MainFrame <init>
+INFO: Sbeam starting
+X1: javax.swing.JLabel[,44,2,8x16,alignmentX=0.0,alignmentY=0.0,border=,flags=8388608,maximumSize=,minimumSize=,preferredSize=,defaultIcon=,disabledIcon=,horizontalAlignment=RIGHT,horizontalTextPosition=TRAILING,iconTextGap=4,labelFor=,text=0,verticalAlignment=CENTER,verticalTextPosition=CENTER]
+x2: javax.swing.JLabel[,44,2,8x16,alignmentX=0.0,alignmentY=0.0,border=,flags=8388608,maximumSize=,minimumSize=,preferredSize=,defaultIcon=,disabledIcon=,horizontalAlignment=RIGHT,horizontalTextPosition=TRAILING,iconTextGap=4,labelFor=,text=0,verticalAlignment=CENTER,verticalTextPosition=CENTER]
+document: sbeam.TOFPOEDocument@4e50df2e
+Feb 23, 2016 3:41:44 PM sbeam.MainFrame actionPerformed
+INFO: Calling: Open
+loading 16 tofs
+Loading in tof: 30 degrees
+Loading in tof: 20 degrees
+Loading in tof: 20 degrees blocked
+Loading in tof: 10 degrees
+Loading in tof: 10 degrees blocked
+Loading in tof: 20 degrees final
+Loading in tof: 10 degrees final
+Loading in tof: Calc #1.1:  m/e = 127, Lab Ang. = 10, Polar Ang. = 90
+Loading in tof: Calc #1.2:  m/e = 127, Lab Ang. = 20, Polar Ang. = 90
+Loading in tof: Calc #1.3:  m/e = 127, Lab Ang. = 30, Polar Ang. = 90
+Loading in tof: Calc #2.1:  m/e = 127, Lab Ang. = 10, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #2
+Loading in tof: Calc #2.2:  m/e = 127, Lab Ang. = 20, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #2
+Loading in tof: Calc #2.3:  m/e = 127, Lab Ang. = 30, Polar Ang. = 90, Detached
+Loading in detached tof: Convolution #2
+Loading in tof: Calc #2.1:  m/e = 127, Lab Ang. = 10, Polar Ang. = 90
+Loading in tof: Calc #2.2:  m/e = 127, Lab Ang. = 20, Polar Ang. = 90
+Loading in tof: Calc #2.3:  m/e = 127, Lab Ang. = 30, Polar Ang. = 90
+Visibility: -2
+Visibility: -2
+Feb 23, 2016 3:41:55 PM sbeam.MainFrame actionPerformed
+INFO: Calling: Display Loaded TOF
+tof title:	10 degrees final
+Focus gained: TOF: 10 degrees final
+Focus lost: TOF: 10 degrees final
+Focus gained: TOF: 10 degrees final

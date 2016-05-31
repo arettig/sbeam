@@ -1,0 +1,8 @@
+Dec 30, 2015 2:18:07 PM sbeam.MainFrame <init>
+INFO: Sbeam starting
+Dec 30, 2015 2:18:11 PM sbeam.MainFrame actionPerformed
+INFO: Calling: Open
+Dec 30, 2015 2:18:20 PM sbeam.MainFrame actionPerformed
+INFO: Calling: Display Loaded TOF
+Dec 30, 2015 2:18:31 PM sbeam.MainFrame actionPerformed
+INFO: Calling: Display Stored P(E)

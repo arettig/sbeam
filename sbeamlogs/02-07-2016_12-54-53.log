@@ -1,0 +1,5 @@
+Feb 07, 2016 12:54:53 PM sbeam.MainFrame <init>
+INFO: Sbeam starting
+X1: javax.swing.JLabel[,44,2,8x16,alignmentX=0.0,alignmentY=0.0,border=,flags=8388608,maximumSize=,minimumSize=,preferredSize=,defaultIcon=,disabledIcon=,horizontalAlignment=RIGHT,horizontalTextPosition=TRAILING,iconTextGap=4,labelFor=,text=0,verticalAlignment=CENTER,verticalTextPosition=CENTER]
+x2: javax.swing.JLabel[,44,2,8x16,alignmentX=0.0,alignmentY=0.0,border=,flags=8388608,maximumSize=,minimumSize=,preferredSize=,defaultIcon=,disabledIcon=,horizontalAlignment=RIGHT,horizontalTextPosition=TRAILING,iconTextGap=4,labelFor=,text=0,verticalAlignment=CENTER,verticalTextPosition=CENTER]
+document: sbeam.TOFPOEDocument@7ef20235

@@ -1,0 +1,6 @@
+Feb 25, 2016 2:49:35 PM sbeam.MainFrame <init>
+INFO: Sbeam starting
+Feb 25, 2016 2:49:46 PM sbeam.MainFrame actionPerformed
+INFO: Calling: Open
+Feb 25, 2016 2:50:48 PM sbeam.MainFrame actionPerformed
+INFO: Calling: TOF Scaling Information
