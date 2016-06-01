@@ -13,6 +13,7 @@ import java.text.NumberFormat;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -52,10 +53,6 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 
 	protected int temporary_scaling_TOF;
 
-	boolean show_minimum_line;
-
-	protected boolean show_maximum_line;
-	protected boolean move_minimum_line, move_maximum_line;
 	protected boolean okay_clicked, baseline_range_changed;
 	protected boolean message_from_dialog;
 
@@ -91,6 +88,7 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 		ButtonGroup group1 = new ButtonGroup();
 		group1.add(fill_graph_radio);
 		group1.add(scale_sing_tof_radio);
+		group1.setSelected(fill_graph_radio.getModel(), true);
 		
 		baseline_radio = new JRadioButton();
 		baseline_radio.addActionListener(this);
@@ -125,6 +123,7 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 		old_time_1_string = "";
 		old_time_2_string = "";
 
+		this.CmFillScale();
 	}
 	
 	public void SetupWindow(){
@@ -254,10 +253,10 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 	public void SetbooleanPointers(boolean show_min, boolean show_max,
 			boolean move_min, boolean move_max, boolean from_dialog,
 			boolean clicked_okay, boolean change_range) {
-		show_minimum_line = show_min;
-		show_maximum_line = show_max;
-		move_minimum_line = move_min;
-		move_maximum_line = move_max;
+		this.parent_tof.show_min_line = show_min;
+		this.parent_tof.show_max_line = show_max;
+		this.parent_tof.move_min_line = move_min;
+		this.parent_tof.move_max_line = move_max;
 		message_from_dialog = from_dialog;
 		okay_clicked = clicked_okay;
 		baseline_range_changed = change_range;
@@ -283,7 +282,7 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 					.setText("Select amplitude for maxima scaling");
 			select_maximum_button.setEnabled(true);
 		}
-		move_minimum_line = false;
+		this.parent_tof.move_min_line = false;
 	}
 
 	public void ResetMaximumButton() {
@@ -294,7 +293,7 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 		if (average_baseline == false) {
 			select_minimum_button.setEnabled(true);
 		}
-		move_maximum_line = false;
+		this.parent_tof.move_max_line = false;
 	}
 
 	public boolean GetScale() {
@@ -345,10 +344,10 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 			chosen_index = choose_tof_listbox.getSelectedIndex();
 
 		temporary_scaling_TOF = -1;
-		show_minimum_line = false;
-		show_maximum_line = false;
-		move_minimum_line = false;
-		move_maximum_line = false;
+		this.parent_tof.show_min_line = false;
+		this.parent_tof.show_max_line = false;
+		this.parent_tof.move_min_line = false;
+		this.parent_tof.move_max_line = false;
 
 		okay_clicked = true;
 
@@ -363,16 +362,17 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 		IsOpen = false;
 		message_from_dialog = true;
 		this.parent_tof.okay_was_clicked = true;
+		this.parent_tof.max_min_never_been_set = false;
 		this.parent_tof.changeScaling();
 		this.dispose();
 	}
 
 	protected void CmCancel() {
 		temporary_scaling_TOF = -1;
-		show_minimum_line = false;
-		show_maximum_line = false;
-		move_minimum_line = false;
-		move_maximum_line = false;
+		this.parent_tof.show_min_line = false;
+		this.parent_tof.show_max_line = false;
+		this.parent_tof.move_min_line = false;
+		this.parent_tof.move_max_line = false;
 
 		okay_clicked = false;
 		IsOpen = false;
@@ -451,10 +451,10 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 		time2_edit.setText("");
 		time2_edit.setEnabled(false);
 
-		show_minimum_line = false;
-		show_maximum_line = false;
-		move_minimum_line = false;
-		move_maximum_line = false;
+		this.parent_tof.show_min_line = false;
+		this.parent_tof.show_max_line = false;
+		this.parent_tof.move_min_line = false;
+		this.parent_tof.move_max_line = false;
 		if (IsOpen) {
 			message_from_dialog = true;
 		}
@@ -491,10 +491,10 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 		// select_minimum_button.setEnabled(true);
 		select_maximum_button.setEnabled(true);
 
-		show_minimum_line = true;
-		show_maximum_line = true;
-		move_minimum_line = false;
-		move_maximum_line = false;
+		this.parent_tof.show_min_line = true;
+		this.parent_tof.show_max_line = true;
+		this.parent_tof.move_min_line = false;
+		this.parent_tof.move_max_line = false;
 		message_from_dialog = true;
 	}
 
@@ -522,9 +522,9 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 		}
 		select_minimum_button.setEnabled(false);
 
-		show_minimum_line = true;
-		show_maximum_line = true;
-		move_minimum_line = false;
+		this.parent_tof.show_min_line = true;
+		this.parent_tof.show_max_line = true;
+		this.parent_tof.move_min_line = false;
 	}
 
 	protected void CmChooseMin() {
@@ -550,9 +550,9 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 		if (maxima_button_depressed == false) {
 			select_minimum_button.setEnabled(true);
 		}
-		show_minimum_line = true;
-		show_maximum_line = true;
-		move_minimum_line = false;
+		this.parent_tof.show_min_line = true;
+		this.parent_tof.show_max_line = true;
+		this.parent_tof.move_min_line = false;
 	}
 
 	protected void CmMinimaButtonDepressed() {
@@ -569,8 +569,8 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 				select_maximum_button.setEnabled(false);
 				
 				this.parent.listenForExtrema = this;
-				move_minimum_line = true;
-				move_maximum_line = false;
+				this.parent_tof.move_min_line = true;
+				this.parent_tof.move_max_line = false;
 			} else {
 				ResetMinimumButton();
 				this.parent.listenForExtrema = null;
@@ -593,8 +593,8 @@ public class ScaleTOFDialog extends JDialog implements ActionListener{
 				select_minimum_button.setEnabled(false);
 
 				this.parent.listenForExtrema = this;
-				move_minimum_line = false;
-				move_maximum_line = true;
+				this.parent_tof.move_min_line = false;
+				this.parent_tof.move_max_line = true;
 			} else {
 				ResetMaximumButton();
 				this.parent.listenForExtrema = null;

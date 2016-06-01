@@ -1103,23 +1103,22 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 		}
 
 
-		if(this.scale_dialog.move_minimum_line)
+		if(show_min_line)
 		{
 			if(moving_min_y_position <= (origin.y - 1))
 			{
 				g2.setColor(Color.red);
-				System.out.println("Minima: " + moving_min_y_position);
 				g2.drawLine(origin_x, moving_min_y_position, (int) (origin_x + x_axis), moving_min_y_position);
 				g2.setColor(Color.black);
 			}
 			lines_present = true;
 		}
 
-		if(this.scale_dialog.move_maximum_line)
+		if(show_max_line)
 		{
 			if(moving_max_y_position >= (int)(origin.y - y_axis + 1))
 			{
-				g2.setColor(Color.red);
+				g2.setColor(Color.blue);
 				g2.drawLine(origin_x, moving_max_y_position, (int) (origin_x+x_axis), moving_max_y_position);
 				g2.setColor(Color.black);
 			}
@@ -1184,7 +1183,6 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 			ResidsHaveChanged = false;
 		}
 		MinMaxHaveChanged = false;
-		return;
 	}
 	// and so forth
 
@@ -1866,6 +1864,10 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 			BaselineTimesNotSet = false;
 		}
 
+		if(this.AssociatedTOFs.size() < 2){
+		 	return;
+		}
+		
 		if (scale_dialog.GetStatus() == false) // i.e. if dialog not already
 												// open
 		{
@@ -1883,9 +1885,9 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 	}
 
 	protected void changeScaling() {
-		System.out.println("changing");
 		// If okay was clicked, store the data and find max and min values
 		if (okay_was_clicked) {
+			System.out.println("changing");
 			MinMaxHaveChanged = true;
 			ResidsHaveChanged = true;
 			scale_to_tof = scale_dialog.GetScale();
@@ -1939,8 +1941,8 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 				moving_min_y_position = minimum_y_position;
 				moving_max_y_position = maximum_y_position;
 			}
-
 		}
+		
 	}
 	protected void AppendLoadedTOF()
 	{
@@ -2145,10 +2147,73 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(this.scale_dialog.minima_button_depressed || this.scale_dialog.maxima_button_depressed){
+		int origin_y = origin.y;
+		// Store new maximum, minimum information and tell dialog that button
+		// has been pressed
+		if (move_min_line) {
+			// The y value of point should give the new minimum value to which
+			// all
+			// TOFs in this view should be scaled.
+
+			minimum_y_position = e.getPoint().y;
+			System.out.println(minimum_y_position);
+			if (minimum_y_position <= maximum_y_position) {
+				minimum_y_position = maximum_y_position + 1;
+			}
+			if (minimum_y_position >= origin_y) {
+				minimum_y_position = origin_y - 1;
+			}
+
+			if (scale_to_tof) {
+				min_counts_scaling_TOF = ((y_value_of_scaling_min - minimum_y_position) / y_spacings_array[current_scaling_TOF])
+						+ minimum_array[current_scaling_TOF];
+				moving_min_counts_scaling_TOF = min_counts_scaling_TOF;
+			} else {
+				min_y_pos_percent = (float) (((float) (moving_min_y_position + 1 - origin_y)) / (2.0 - y_axis));
+				moving_min_y_pos_percent = min_y_pos_percent;
+			}
+
+			moving_min_y_position = minimum_y_position;
+
+			// Tell dialog to change back the minimum button to its original
+			// state
+			scale_dialog.ResetMinimumButton();
+			this.repaint();
+		}
+		if (move_max_line) {
+			// The y value of point should give the new minimum value to which
+			// all
+			// TOFs in this view should be scaled.
+			maximum_y_position = e.getPoint().y;
+			if (maximum_y_position >= minimum_y_position) {
+				maximum_y_position = minimum_y_position - 1;
+			}
+
+			if (maximum_y_position <= (origin_y - y_axis)) {
+				maximum_y_position = (int) (origin_y - y_axis + 1);
+			}
+
+			if (scale_to_tof) {
+				max_counts_scaling_TOF = ((y_value_of_scaling_min - maximum_y_position) / y_spacings_array[current_scaling_TOF])
+						+ minimum_array[current_scaling_TOF];
+				moving_max_counts_scaling_TOF = max_counts_scaling_TOF;
+			} else {
+				max_y_pos_percent = (float) (((float) (moving_max_y_position + 1 - origin_y)) / (2.0 - y_axis));
+				moving_max_y_pos_percent = max_y_pos_percent;
+			}
+
+			moving_max_y_position = maximum_y_position;
+			// Tell dialog to change back the minimum button to its original
+			// state
+			scale_dialog.ResetMaximumButton();
+			this.repaint();
+		}
+/*
+		if (this.scale_dialog.minima_button_depressed
+				|| this.scale_dialog.maxima_button_depressed) {
 			this.scale_dialog.getInput(this.getYValue(e.getPoint().y));
 		}
-		
+*/
 	}
 
 	@Override
@@ -2239,7 +2304,7 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 		float x_time, y_value;
 		String temp_text;
 		
-		x_gadget_text = "x pos.:  ";
+		x_gadget_text = "";
 		x_gadget_text += this.getXValue(point.x);
 		x_gadget_text += " µs";
 		x_pos_gadget.setText(x_gadget_text);
