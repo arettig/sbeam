@@ -234,7 +234,6 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 
 	public void updateContent(){
 		Graphics g = this.getGraphics();
-		System.out.println("Painting again");
 		this.Draw_TOF(g);
 	}
 	public static String StaticName()
@@ -1708,7 +1707,6 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 
 		resid.SetScalingParams(slope0, intercept0, slope1, intercept1);
 
-
 		TOFPOEDoc.AddResidData(resid);
 		TOFPOEDoc.UpdateViewNumber(resid_view_number + 1);
 		ResidView rView = new ResidView(TOFPOEDoc, mainWindow);
@@ -1887,7 +1885,6 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 	protected void changeScaling() {
 		// If okay was clicked, store the data and find max and min values
 		if (okay_was_clicked) {
-			System.out.println("changing");
 			MinMaxHaveChanged = true;
 			ResidsHaveChanged = true;
 			scale_to_tof = scale_dialog.GetScale();
@@ -1897,7 +1894,6 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 			// correspond to
 			// the maximum and minimum value lines.
 			if (scale_to_tof) {
-				System.out.println("here2");
 				if (average_baseline) {
 					temp_scaling_tof = scaling_tof;
 					baseline_time1 = temp_baseline_time1;
@@ -2156,7 +2152,6 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 			// TOFs in this view should be scaled.
 
 			minimum_y_position = e.getPoint().y;
-			System.out.println(minimum_y_position);
 			if (minimum_y_position <= maximum_y_position) {
 				minimum_y_position = maximum_y_position + 1;
 			}

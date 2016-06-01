@@ -90,7 +90,7 @@ public class MainFrame extends JFrame implements ActionListener, FocusListener{
 	}
 
 	public void initStuff() {
-		this.setSize(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
+		//this.setSize(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -331,14 +331,6 @@ public class MainFrame extends JFrame implements ActionListener, FocusListener{
 		}else{
 			System.out.println("Not a menu item");
 		}
-	}
-
-	public static void main(String[] args){
-		MainFrame mainWindow = new MainFrame("Single Beam Convolution Program");
-		mainWindow.initStuff();
-		mainWindow.pack();
-		mainWindow.setVisible(true);
-
 	}
 
 	@Override

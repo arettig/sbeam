@@ -2705,8 +2705,8 @@ public class sbapp {
 	        new File(path).mkdir();
 	        path+= "/" + dateFormat.format(date) + ".log";
 			out = new PrintStream(new FileOutputStream(path));
-			//System.setOut(out);
-			//System.setErr(out);
+			System.setOut(out);
+			System.setErr(out);
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (FileNotFoundException | URISyntaxException |  UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			// TODO Auto-generated catch block

@@ -8,12 +8,15 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JColorChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 
-public class ResidView extends JInternalFrame{
+public class ResidView extends JInternalFrame implements MouseListener, MouseMotionListener{
 
 
 	protected float starting_time, ending_time;
@@ -61,6 +64,9 @@ public class ResidView extends JInternalFrame{
 		param_dialog.SetType(4);
 		ViewNumber = TOFPOEDoc.GetViewNumber();
 		
+		this.addFocusListener(parent);
+		this.addMouseListener(this);
+		this.addMouseMotionListener(this);
 
 		starting_time = 0;
 		ending_time = -1;
@@ -85,6 +91,7 @@ public class ResidView extends JInternalFrame{
 		this.setFocusable(true);
 		this.setEnabled(true);
 		this.setVisible(true);
+		this.setResizable(true);
  	}
 	
 	public static String StaticName()
@@ -150,7 +157,6 @@ public class ResidView extends JInternalFrame{
 	}
 
 	protected void Draw_Resid(Graphics g){
-		
 		Graphics2D g2 = (Graphics2D) g;
 		// Will do this in the view so can control the size of the TOF
 		int x_pos, y_pos, k;
@@ -329,7 +335,6 @@ public class ResidView extends JInternalFrame{
 			sum_square_gadget_text += temp_text;
 			//sum_square_gadget.SetText(sum_square_gadget_text);
 		}
-		return;
 	}
 	// and so forth
 	/*protected void EvSize(int first, TSize win_size){
@@ -399,10 +404,14 @@ public class ResidView extends JInternalFrame{
 			sum_square_gadget.SetText(sum_square_gadget_text);
 		}
 	}*/
+	
 
-	protected void Paint(Graphics g)  {
+	@Override
+	public void paint(Graphics g)  {
+		super.paint(g);
 		Draw_Resid(g);
 	}
+	
 	protected void CmResidAxisRange(){
 		float[] time_pointer;
 		float min_time, max_time;
@@ -439,6 +448,109 @@ public class ResidView extends JInternalFrame{
 		if (c != null) {
 			residual.SetResidColor(c);
 		}
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		String temp_text;
+		float x_time, y_value;
+		Point point = e.getPoint();
+
+		if(residual.GetTitle() != null)
+		{
+			if((point.x >= starting_x) && (point.x <= (starting_x + x_axis - x_offset)))
+			{
+				x_gadget_text = "x pos.:  ";
+
+				// Convert the x position to a time in microseconds
+				if(x_spacing != 0)
+				{
+					x_time = ((point.x - starting_x) / x_spacing) + starting_time;
+				}
+				else
+				{
+					x_time = starting_time;
+				}
+				temp_text = "" + x_time;
+
+
+				x_gadget_text += temp_text;
+				x_gadget_text += "  µs";
+			}
+			else
+			{
+				x_gadget_text = "x pos.:  ";
+			}
+			x_pos_gadget.setText(x_gadget_text);
+
+			if((point.y <= starting_y) && (point.y >= (starting_y - y_axis)))
+			{
+				y_gadget_text = "y pos.:  ";
+
+				// Convert the x position to a time in microseconds
+				y_value = ((starting_y - y_offset - point.y) / y_spacing) + minimum;
+
+				if(point.y == (int) (starting_y + y_offset - y_axis))
+				{
+					y_value = maximum;
+				}
+				if(point.y == (int) (starting_y - y_offset))
+				{
+					y_value = minimum;
+				}
+				temp_text = "" + y_value;
+
+
+				y_gadget_text += temp_text;
+			}
+			else
+			{
+				y_gadget_text = "y pos.:  ";
+			}
+			y_pos_gadget.setText(y_gadget_text);
+
+			sum_square_gadget_text = "Sum of squares:  ";
+			temp_text = "" + residual.GetChiSquared();
+			sum_square_gadget_text += temp_text;
+			sum_square_gadget.setText(sum_square_gadget_text);
+		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	// View notification functions
