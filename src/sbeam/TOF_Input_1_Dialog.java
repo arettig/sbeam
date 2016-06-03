@@ -311,12 +311,8 @@ public class TOF_Input_1_Dialog extends JDialog implements ActionListener {
 		SetupWindow();
 		this.pack();
 		this.setResizable(false);
-		this.setModalityType(ModalityType.APPLICATION_MODAL);
+		this.setModal(true);
 		this.setVisible(true);
-	}
-
-	public static void main(String[] args) {
-		TOF_Input_1_Dialog d = new TOF_Input_1_Dialog(null);
 	}
 
 	@Override

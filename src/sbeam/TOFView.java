@@ -224,12 +224,12 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 		mainWindow.addFrame(this);
 		this.setBackground(Color.white);
 		this.setPreferredSize(new Dimension(400, 200));
-		this.pack();
-		//this.setModalExclusionType();
+		//this.pack();
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setFocusable(true);
 		this.setEnabled(true);
 		this.setVisible(true);
+		System.out.println("Should be added");
 	}
 
 	public void updateContent(){

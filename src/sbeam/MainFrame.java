@@ -90,8 +90,7 @@ public class MainFrame extends JFrame implements ActionListener, FocusListener{
 	}
 
 	public void initStuff() {
-		//this.setSize(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		menubar = new JMenuBar();
@@ -237,6 +236,7 @@ public class MainFrame extends JFrame implements ActionListener, FocusListener{
 		pane = new JDesktopPane();
 		pane.setBackground(getForeground());
 		
+		
 		xPos = 0;
 		yPos = 0;
 		xposLabel = new JLabel(""+xPos);
@@ -253,18 +253,15 @@ public class MainFrame extends JFrame implements ActionListener, FocusListener{
 		sb.add(new JLabel("\tY Pos:\t"));
 		sb.add(yPosLabel);
 
-		this.add(sb, BorderLayout.SOUTH);
 		this.setJMenuBar(menubar);
 		this.add(pane);
-
-	
-		
+		this.add(sb, BorderLayout.SOUTH);
 		
 	}
 	
 	public void addFrame(JInternalFrame fr){
 		this.internalFrames.add(fr);
-		pane.add(fr);
+		pane.add(fr, BorderLayout.NORTH);
 	}
 	
 	public void addDialog(JDialog d){
@@ -294,9 +291,13 @@ public class MainFrame extends JFrame implements ActionListener, FocusListener{
 	public void Execute(){
 		this.initStuff();
 		this.pack();
-		
+		this.setSize(800, 400);
+		this.setExtendedState(MAXIMIZED_BOTH);
+		pane.setMinimumSize(pane.getSize());
+		this.setMinimumSize(this.getSize());
 		this.setVisible(true);
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -374,7 +375,7 @@ public class MainFrame extends JFrame implements ActionListener, FocusListener{
 			tempMenu.add(item);
 			
 		}
-		this.pack();
+		//this.pack();
 	}
 
 	public void internalClosed(JInternalFrame f){

@@ -1401,6 +1401,7 @@ public class sbapp {
 			// GetDocManager().MatchTemplate("*.ufc").CreateView(session_document);
 			time_of_flight.SetIsVisible(-1); // CHANGE: change var when visible
 
+			System.out.println(t.getSize() + "\t" + t.getLocation());
 			tof_input_1 = null;
 		}
 		else
