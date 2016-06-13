@@ -1182,6 +1182,7 @@ public class sbapp {
 			session_document.OutputUFCData(bw, compatibilityMode);
 
 			bw.close();
+			JOptionPane.showMessageDialog(mainWindow, "Saved to " + f.getCanonicalPath());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

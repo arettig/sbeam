@@ -56,6 +56,8 @@ public class List_Dialog extends JDialog implements ActionListener {
 		cancel = new JButton("cancel");
 
 		text_of_list = ls;
+		
+		dialog_caption = "Choose " + numSelections + " TOF's";
 	}
 
 	void SetCaption(String input_text) {

@@ -1629,8 +1629,6 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 			//check
 			
 		}
-
-
 		if(view_tof_number == 2)
 		{
 			view_tof_numbers = new int[2];
@@ -1863,6 +1861,7 @@ public class TOFView extends JInternalFrame implements MouseInputListener, Inter
 		}
 
 		if(this.AssociatedTOFs.size() < 2){
+			JOptionPane.showMessageDialog(this, "You need at least 2 TOF's to scale!");
 		 	return;
 		}
 		

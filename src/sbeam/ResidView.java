@@ -467,7 +467,7 @@ public class ResidView extends JInternalFrame implements MouseListener, MouseMot
 		{
 			if((point.x >= starting_x) && (point.x <= (starting_x + x_axis - x_offset)))
 			{
-				x_gadget_text = "x pos.:  ";
+				x_gadget_text = "";
 
 				// Convert the x position to a time in microseconds
 				if(x_spacing != 0)
@@ -486,13 +486,13 @@ public class ResidView extends JInternalFrame implements MouseListener, MouseMot
 			}
 			else
 			{
-				x_gadget_text = "x pos.:  ";
+				x_gadget_text = "";
 			}
 			x_pos_gadget.setText(x_gadget_text);
 
 			if((point.y <= starting_y) && (point.y >= (starting_y - y_axis)))
 			{
-				y_gadget_text = "y pos.:  ";
+				y_gadget_text = "";
 
 				// Convert the x position to a time in microseconds
 				y_value = ((starting_y - y_offset - point.y) / y_spacing) + minimum;
@@ -512,7 +512,7 @@ public class ResidView extends JInternalFrame implements MouseListener, MouseMot
 			}
 			else
 			{
-				y_gadget_text = "y pos.:  ";
+				y_gadget_text = "";
 			}
 			y_pos_gadget.setText(y_gadget_text);
 
